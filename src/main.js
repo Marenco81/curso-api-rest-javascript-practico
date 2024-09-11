@@ -20,4 +20,29 @@ async function trendingMoviesPreview() {
     });
 }
 
+async function getCategoriesPreview() {
+    const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY);
+    const data = await res.json();
+
+    const categories = data.genres;
+    categories.forEach(category => {
+        const previewCategoriescontainer = document.querySelector('#categoriesPreview .categoriesPreview-list')
+
+        const categoryContainer = document.createElement('div');
+        categoryContainer.classList.add('category-container');
+
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.classList.add('category-title');
+        categoryTitle.setAttribute('id', 'id' + category.id);
+        const categoryTitleText = document.createTextNode(category.name);
+
+        categoryTitle.appendChild(categoryTitleText);
+        categoryContainer.appendChild(categoryTitle);
+        previewCategoriescontainer.appendChild(categoryContainer);
+
+
+    });
+}
+
 trendingMoviesPreview();
+getCategoriesPreview();
