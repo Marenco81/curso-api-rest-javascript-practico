@@ -28,7 +28,7 @@ async function trendingMoviesPreview() {
         trendingMoviesPreviewcontainer.appendChild(movieContainer);
 
     });
-}
+};
 
 async function getCategoriesPreview() {
     const {data} = await api('/genre/movie/list');
@@ -51,7 +51,7 @@ async function getCategoriesPreview() {
 
 
     });
-}
-
-trendingMoviesPreview();
-getCategoriesPreview();
+};
+// Estas funciones se llaman ahora desde navigation.js
+// trendingMoviesPreview();
+// getCategoriesPreview();

@@ -21,10 +21,17 @@ function navigator() {
 
 function homePage() {
     console.log('HOME!!');
+
+    trendingMoviesPreview();
+    getCategoriesPreview();
 };
 
 function categoriesPage() {
     console.log('CATEGORIES!!');
+};
+
+function moviesPage() {
+    console.log('MOVIES!!');
 };
 
 function searchPage() {
@@ -33,8 +40,4 @@ function searchPage() {
 
 function trendsPage() {
     console.log('TRENDS!!');
-};
-
-function homePage() {
-    console.log('HOME!!');
 };
