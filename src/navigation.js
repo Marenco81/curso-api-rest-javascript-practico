@@ -73,6 +73,8 @@ function categoriesPage() {
     const [_ , categoryData] = location.hash.split('='); // ['#category', 'id-name']
     const [categoryId, categoryName] = categoryData.split('-');
 
+    headerCategoryTitle.innerHTML = categoryName;
+
     getMoviesByCategory(categoryId);
 
 };
