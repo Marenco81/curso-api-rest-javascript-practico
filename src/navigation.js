@@ -32,6 +32,7 @@ function navigator() {
         homePage();
     }
     location.hash
+    document.scrollTop = 0;
 };
 
 function homePage() {
