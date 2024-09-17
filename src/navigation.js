@@ -1,7 +1,7 @@
 searchFormBtn.addEventListener('click', () => {
     // searchPage();
     //la funcion parace no funcionar si ejecuta searchPage(), por eso se usa el cambio de hash...
-    location.hash='#search='
+    location.hash='#search=' + searchFormInput.value;
 });
 trendingBtn.addEventListener('click', () => {
     // trendsPage();
@@ -106,13 +106,16 @@ function searchPage() {
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
-    headerCategoryTitle.classList.remove('inactive');
+    headerCategoryTitle.classList.add('inactive');
     searchForm.classList.remove('inactive');
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
+
+    const [_ , query] = location.hash.split('='); // ['#search', 'buscador']
+    getMoviesBySearch(query);
 };
 
 function trendsPage() {

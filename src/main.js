@@ -99,6 +99,17 @@ async function getMoviesByCategory(id) {
     createMovies(movies, genericSection);
 };
 
+async function getMoviesBySearch(query) {
+    const {data} = await api('/search/movie', {
+        params: {
+            query: query,
+        }
+    });
+    const movies = data.results;
+
+    createMovies(movies, genericSection);
+};
+
 // Estas funciones se llaman ahora desde navigation.js
 // trendingMoviesPreview();
 // getCategoriesPreview();
