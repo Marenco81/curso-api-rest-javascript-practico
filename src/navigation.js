@@ -97,6 +97,9 @@ function moviesPage() {
     genericSection.classList.add('inactive');
     movieDetailSection.classList.remove('inactive');
 
+    const [_ , movieId] = location.hash.split('='); // ['#movie', 'id']
+    getMovieById(movieId);
+
 };
 
 function searchPage() {
