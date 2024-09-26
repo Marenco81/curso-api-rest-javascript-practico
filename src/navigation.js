@@ -1,3 +1,6 @@
+let page = 1;
+let infinitScroll;
+
 searchFormBtn.addEventListener('click', () => {
     // searchPage();
     //la funcion parace no funcionar si ejecuta searchPage(), por eso se usa el cambio de hash...
@@ -16,10 +19,16 @@ arrowBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
+window.addEventListener('scroll', infinitScroll, false);
 
 
 function navigator() {
     console.log({location});
+
+    if(infinitScroll) {
+        document.addEventListener('scroll', infinitScroll, {pasive:false});
+        infinitScroll = undefined;
+    }
 
     if (location.hash.startsWith('#trends')) {
         trendsPage();
@@ -33,7 +42,12 @@ function navigator() {
         homePage();
     }
     location.hash
-    document.scrollTop = 0;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    if(infinitScroll) {
+        window.addEventListener('scroll', infinitScroll, false);
+    }
 };
 
 function homePage() {
@@ -140,4 +154,5 @@ function trendsPage() {
     headerCategoryTitle.innerHTML = 'Trends';
 
     trendingMovies();
+    infinitScroll = getPaginatedTrendingMovies;
 };
